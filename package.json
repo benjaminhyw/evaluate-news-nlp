@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "eslint": "^7.2.0",
     "express": "^4.17.1",
     "node": "^14.4.0",
     "webpack": "^4.35.3",
