@@ -23,6 +23,22 @@ app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
 
+app.post("/testing", async function (req, res) {
+  textapi.sentiment({ text: "John is a very good football player" }, function (
+    err,
+    result,
+    rateLimits
+  ) {
+    console.log("Error below:");
+    console.log(err);
+    console.log("Result below:");
+    console.log(result);
+    console.log("ERate Limits  below:");
+    console.log(rateLimits);
+    res.send(mockAPIResponse);
+  });
+});
+
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
   console.log("Example app listening on port 8081!");
