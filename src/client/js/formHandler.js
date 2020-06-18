@@ -12,7 +12,7 @@ function handleSubmit(event) {
   //     document.getElementById("results").innerHTML = res.message;
   //   });
 
-  fetch("http://localhost:8081/testing", {
+  fetch("http://localhost:8081/sentiment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

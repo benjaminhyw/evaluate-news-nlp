@@ -31,7 +31,7 @@ app.get("/test", function (req, res) {
   res.send(mockAPIResponse);
 });
 
-app.post("/testing", async function (req, res) {
+app.post("/sentiment", function (req, res) {
   textapi.sentiment({ text: "John is a very good football player" }, function (
     err,
     result,
