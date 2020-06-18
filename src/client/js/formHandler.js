@@ -21,7 +21,10 @@ function handleSubmit(event) {
   })
     .then((res) => res.json())
     .then(function (res) {
-      document.getElementById("results").innerHTML = res.text;
+      console.log(res);
+      document.getElementById("text-sent").innerHTML = res.text;
+      document.getElementById("polarity").innerHTML = res.polarity;
+      document.getElementById("subjectivity").innerHTML = res.subjectivity;
     });
 }
 
