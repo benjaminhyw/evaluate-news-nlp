@@ -1,20 +1,24 @@
-var path = require("path");
+const AYLIENTextAPI = require("aylien_textapi");
+const cors = require("cors");
+const dotenv = require("dotenv");
 const express = require("express");
-const mockAPIResponse = require("./mockAPI.js");
-var cors = require("cors");
+const path = require("path");
+const bodyParser = require("body-parser");
 
-var aylien = require("aylien_textapi");
-var textapi = new aylien({
+const mockAPIResponse = require("./mockAPI.js");
+
+dotenv.config();
+
+const textapi = new AYLIENTextAPI({
   application_id: process.env.API_ID,
   application_key: process.env.API_KEY,
 });
-const dotenv = require("dotenv");
-dotenv.config();
 
 const app = express();
-
 app.use(cors());
 app.use(express.static("dist"));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 console.log(__dirname);
 
@@ -29,4 +33,27 @@ app.listen(8081, function () {
 
 app.get("/test", function (req, res) {
   res.send(mockAPIResponse);
+});
+
+// BODY-PARSER
+// https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+// https://stackoverflow.com/questions/44233791/fetch-can-you-pass-parameters-to-the-server
+
+app.post("/sentiment", function (req, res) {
+  console.log("::: Running express.post :::");
+  console.log(req.body.text);
+
+  textapi.sentiment({ text: req.body.text }, function (
+    err,
+    result,
+    rateLimits
+  ) {
+    console.log("Error below:");
+    console.log(err);
+    console.log("Result below:");
+    console.log(result);
+    console.log("ERate Limits  below:");
+    console.log(rateLimits);
+    res.send(result);
+  });
 });
