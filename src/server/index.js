@@ -31,8 +31,15 @@ app.get("/test", function (req, res) {
   res.send(mockAPIResponse);
 });
 
+// BODY-PARSER
+// https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+// https://stackoverflow.com/questions/44233791/fetch-can-you-pass-parameters-to-the-server
+
 app.post("/sentiment", function (req, res) {
-  textapi.sentiment({ text: "John is a very good football player" }, function (
+  console.log("::: Running express.post :::");
+  console.log(req.body.text);
+
+  textapi.sentiment({ text: req.body.text }, function (
     err,
     result,
     rateLimits
