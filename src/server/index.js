@@ -3,6 +3,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
+
 const mockAPIResponse = require("./mockAPI.js");
 
 dotenv.config();
@@ -15,6 +17,8 @@ const textapi = new AYLIENTextAPI({
 const app = express();
 app.use(cors());
 app.use(express.static("dist"));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 console.log(__dirname);
 
