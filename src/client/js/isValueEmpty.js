@@ -6,4 +6,3 @@ function isValueEmpty(value) {
 }
 
 export { isValueEmpty };
-module.exports = isValueEmpty;

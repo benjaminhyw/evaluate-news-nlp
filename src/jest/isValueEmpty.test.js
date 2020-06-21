@@ -1,4 +1,4 @@
-const isValueEmpty = require("../client/js/isValueEmpty");
+import { isValueEmpty } from "../client/js/isValueEmpty";
 
 test("returns true if value is empty", () => {
   expect(isValueEmpty("")).toBe(true);
