@@ -1,4 +1,4 @@
-# udacity-weather-journal-app
+# udacity-evaluate-news-nlp
 
 This is my submission for Udacity's Front End Developer Nanodegree - Evaluate News NLP.
 
