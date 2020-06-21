@@ -5,8 +5,6 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 
-const mockAPIResponse = require("./mockAPI.js");
-
 dotenv.config();
 
 const textapi = new AYLIENTextAPI({
@@ -30,14 +28,6 @@ app.get("/", function (req, res) {
 app.listen(8081, function () {
   console.log("Example app listening on port 8081!");
 });
-
-app.get("/test", function (req, res) {
-  res.send(mockAPIResponse);
-});
-
-// BODY-PARSER
-// https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
-// https://stackoverflow.com/questions/44233791/fetch-can-you-pass-parameters-to-the-server
 
 app.post("/sentiment", function (req, res) {
   console.log("::: Running express.post :::");
